@@ -25,3 +25,7 @@ https://github.com/ros-drivers/audio_common/pull/248
 ```bash
 ros2 run sound_play soundplay_node.py
 ```
+
+```bash
+ros2 run sound_play play.py /절대경로/음악이름.mp3
+```
