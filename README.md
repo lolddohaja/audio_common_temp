@@ -3,17 +3,7 @@
 default ROS2 iron check
 
 ```bash
-sudo apt update && sudo apt install python3-vcstool
-
-mkdir ~/ros2_ws/src -p
-cd ~/ros2_ws/src
-git clone https://github.com/lolddohaja/audio_common_temp
-cd ~/ros2_ws/src/audio_common_temp
-vcs import ../ < ./audio.repos
-cd ..
-rosdep install --from-paths . -y -r -i
-cd ~/ros2_ws
-colcon build
+docker build -t zetabank/outside:iron-audio-v0.0.1 -f Dockerfile .
 ```
 
 아직 PR이 승인 되지 않아서 이렇게 빌드해서 사용해야 한다.
