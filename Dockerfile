@@ -9,6 +9,7 @@ ENV DEBIAN_FRONTEND=noninteractive
 RUN apt-get update && apt-get install -y --no-install-recommends \
     git \
     python3-vcstool \
+    ros-dev-tools \
     && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /root
@@ -33,7 +34,8 @@ RUN apt-get update && \
     libboost-all-dev \
     libgstreamer1.0-dev \
     libgstreamer-plugins-base1.0-dev \
-    python3-jsonschema
+    python3-jsonschema \
+    && rm -rf /var/lib/apt/lists/*
 
 RUN mkdir -p ~/ros2_ws/src \
     && cd ~/ros2_ws/src \ 
