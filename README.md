@@ -19,8 +19,7 @@ https://github.com/ros-drivers/audio_common/pull/248
 ```bash
 ros2 run sound_play soundplay_node.py
 
-docker run --rm -it zetabank/outside:iron-audio-v0.0.1 ros2 run sound_play soundplay_node.py
-
+docker run --rm -it --device=/dev/snd:/dev/snd -e ALSA_CARD=1 zetabank/outside:iron-audio-v0.0.1 ros2 run sound_play soundplay_node.py
 ```
 
 ```bash
