@@ -6,8 +6,8 @@ repositories:
   rosidl:
     type: git
     url: https://github.com/ros2/rosidl.git
-    version: 3.3.1
+    version: iron
   rosidl_python:
     type: git
-    url: https://github.com/knorth55/rosidl_python.git
-    version: fix-141
+    url: https://github.com/lolddohaja/rosidl_python.git
+    version: iron_sound
