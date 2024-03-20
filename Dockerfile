@@ -13,6 +13,28 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 
 WORKDIR /root
 
+RUN apt-get update && \
+    apt-get install -y \
+    ros-iron-test-interface-files \
+    ros-iron-performance-test-fixture \
+    festival \
+    festvox-kallpc16k \
+    gstreamer1.0-tools \
+    libgstreamer1.0-0 \
+    gir1.2-gstreamer-1.0 \
+    gstreamer1.0-alsa \
+    gstreamer1.0-plugins-base \
+    libgstreamer-plugins-base1.0-0 \
+    gir1.2-gst-plugins-base-1.0 \
+    gstreamer1.0-plugins-ugly \
+    gstreamer1.0-plugins-good \
+    libgstreamer-plugins-good1.0-0 \
+    python3-gi \
+    libboost-all-dev \
+    libgstreamer1.0-dev \
+    libgstreamer-plugins-base1.0-dev \
+    python3-jsonschema
+
 RUN mkdir -p ~/ros2_ws/src \
     && cd ~/ros2_ws/src \ 
     && git clone -b iron_docker https://github.com/lolddohaja/audio_common_temp.git \ 
