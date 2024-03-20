@@ -42,7 +42,8 @@ RUN mkdir -p ~/ros2_ws/src \
     && vcs import ../ < ./audio.repos \ 
     && cd ~/ros2_ws \ 
     && rosdep update \
-    && rosdep install --from-paths src -y -r -i \  
+    && rosdep install --from-paths src -y -r -i \
+    && . /opt/ros/$ROS_DISTRO/setup.sh \
     && colcon build
 
 RUN sed -i '$isource "/root/ros2_ws/install/setup.bash"' /ros_entrypoint.sh
