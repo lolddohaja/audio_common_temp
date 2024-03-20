@@ -18,8 +18,13 @@ https://github.com/ros-drivers/audio_common/pull/248
 
 ```bash
 ros2 run sound_play soundplay_node.py
+
+docker run --rm -it zetabank/outside:iron-audio-v0.0.1 ros2 run sound_play soundplay_node.py
+
 ```
 
 ```bash
 ros2 run sound_play play.py /절대경로/음악이름.mp3
+
+docker run --rm -it zetabank/outside:iron-audio-v0.0.1 ros2 run sound_play play.py /root/sounds/voice/start.mp3
 ```

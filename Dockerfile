@@ -48,6 +48,8 @@ RUN mkdir -p ~/ros2_ws/src \
     && . /opt/ros/$ROS_DISTRO/setup.sh \
     && colcon build
 
+RUN mv /root/ros2_ws/src/audio_common_temp/sounds /root
+
 RUN sed -i '$isource "/root/ros2_ws/install/setup.bash"' /ros_entrypoint.sh
 
 # RUN rosdep update --rosdistro $ROS_DISTRO
