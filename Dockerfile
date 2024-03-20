@@ -19,6 +19,7 @@ RUN mkdir -p ~/ros2_ws/src \
     && cd ~/ros2_ws/src/audio_common_temp \ 
     && vcs import ../ < ./audio.repos \ 
     && cd ~/ros2_ws \ 
+    && rosdep update \
     && rosdep install --from-paths src -y -r -i \  
     && colcon build
 
