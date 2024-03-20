@@ -1,6 +1,8 @@
 # audio_common_temp
 
 ```bash
+sudo apt update && sudo apt install python3-vcstool
+
 mkdir ~/ros2_ws/src -p
 cd ~/ros2_ws/src
 git clone https://github.com/lolddohaja/audio_common_temp
