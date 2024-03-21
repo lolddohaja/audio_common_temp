@@ -1,12 +1,12 @@
-FROM ros:iron-ros-base
+FROM amr-gnss-iron
+ENV DEBIAN_FRONTEND=noninteractive
 
 ARG NETRC
 
 SHELL ["bash", "-c"]
 
-ENV DEBIAN_FRONTEND=noninteractive
 
-RUN apt-get update && apt-get install -y --no-install-recommends \
+RUN apt-get update && apt-get install -y \
     git \
     python3-vcstool \
     ros-dev-tools \
@@ -16,8 +16,8 @@ WORKDIR /root
 
 RUN apt-get update && \
     apt-get install -y \
-    ros-iron-test-interface-files \
-    ros-iron-performance-test-fixture \
+    ros-$ROS_DISTRO-test-interface-files \
+    ros-$ROS_DISTRO-performance-test-fixture \
     festival \
     festvox-kallpc16k \
     gstreamer1.0-tools \
@@ -37,20 +37,20 @@ RUN apt-get update && \
     python3-jsonschema \
     && rm -rf /var/lib/apt/lists/*
 
-RUN mkdir -p ~/ros2_ws/src \
-    && cd ~/ros2_ws/src \ 
+RUN mkdir -p /root/ws/src \
+    && cd /root/ws/src \ 
     && git clone -b iron_docker https://github.com/lolddohaja/audio_common_temp.git \ 
-    && cd ~/ros2_ws/src/audio_common_temp \ 
+    && cd /root/ws/src/audio_common_temp \ 
     && vcs import ../ < ./audio.repos \ 
-    && cd ~/ros2_ws \ 
+    && cd /root/ws \ 
     && rosdep update \
     && rosdep install --from-paths src -y -r -i \
-    && . /opt/ros/$ROS_DISTRO/setup.sh \
+    && source /opt/ros/$ROS_DISTRO/setup.sh \
     && colcon build
 
-RUN mv /root/ros2_ws/src/audio_common_temp/sounds /root
+RUN mv /root/ws/src/audio_common_temp/sounds /root
 
-RUN sed -i '$isource "/root/ros2_ws/install/setup.bash"' /ros_entrypoint.sh
+RUN echo "source /root/ws/install/setup.bash" >> ~/.bashrc
 
 ENTRYPOINT ["/ros_entrypoint.sh"]
 CMD ["bash"]
